@@ -1,0 +1,32 @@
+// ==UserScript==
+// @name         自动填充答案
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  try to take over the world!
+// @author       You
+// @match        http://*/*
+// @grant        none
+// @require http://code.jquery.com/jquery-latest.js
+// ==/UserScript==
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+(function() {
+    'use strict';
+     setTimeout(
+        $(document).ready(function(){
+
+            var emotion_index = Math.floor(Math.random()*8);
+            var polarity_index = Math.floor(Math.random()*3);
+            $("#frame").click()
+            $(".emotion_class").get(0).children[emotion_index].children[0].children[0].checked = true
+
+            $(".polarity_class").get(0).children[polarity_index].children[0].children[0].checked = true
+            sleep(2000);
+            setInterval($(".button").click(), 10000)
+
+       }), 10000)
+    // Your code here...
+})();
